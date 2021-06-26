@@ -27,8 +27,8 @@ class MainClass {
   {
 Console.WriteLine("\n");
 Console.WriteLine("Entre com a palavra chave da busca");
-string produtos_relacionados=Console.ReadLine();
-    List<Produto> produtos = Produto.ConsultarProdutos(produtos_relacionados);
+string produtosrelacionados=Console.ReadLine();
+    List<Produto> produtos = Produto.PesquisarProdutos("%"+produtosrelacionados+"%");
     foreach(var produto in produtos)
     {
       produto.Imprimir();

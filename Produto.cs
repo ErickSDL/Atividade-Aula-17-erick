@@ -87,7 +87,7 @@ this._preco);
 
     return produtos;
   }
-  public static List<Produto> ConsultarProdutos(string produtos_relacionados)
+  public static List<Produto> PesquisarProdutos(string produtosrelacionados)
   {
     List<Produto> produtos = new List<Produto>();
 
@@ -97,7 +97,8 @@ this._preco);
      
       var command = connection.CreateCommand();
       command.CommandText = @"SELECT * FROM produto 
-      WHERE produto.nome LIKE '%"+produtos_relacionados+"%';";
+      WHERE produto.nome LIKE ($produtosrelacionados);";
+      command.Parameters.AddWithValue("$produtosrelacionados",produtosrelacionados);
       using (var reader = command.ExecuteReader())
       {
         while (reader.Read())
